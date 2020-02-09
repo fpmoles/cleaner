@@ -11,7 +11,7 @@ def main():
         clean_directory(directory)
 
 
-def get_directories(directory, level=4):
+def get_directories(directory, level=6):
     root_dir = directory.rstrip(os.path.sep)
     assert os.path.isdir(root_dir)
     num_sep = root_dir.count(os.path.sep)
@@ -25,13 +25,15 @@ def get_directories(directory, level=4):
 def clean_directory(directory):
     delete_directory(directory + "/.git")
     delete_file(directory + "/.gitignore")
-    delete_file(directory + "README.md")
+    delete_file(directory + "/README.md")
     delete_directory(directory + "/.idea")
     delete_directory(directory + "/target")
     delete_file(directory + "/mvnw")
     delete_file(directory + "/mvnw.cmd")
     delete_file_by_extension(directory, ".iml")
-
+    delete_file(directory + "/HELP.md")
+    delete_file(directory + "/LICENSE")
+    delete_directory(directory + "/venv")
 
 def delete_directory(directory):
     if os.path.exists(directory):
